@@ -20,17 +20,26 @@ Windowsの日本語106キーボードをUS-ASCII風配列にする
 1.  再起動
 
 
+### キーボードがUSB接続で、日本語PS/2を選べない場合
+
+キーボードがUSB接続で、コントロールパネルから日本語PS/2キーボードを選べない場合は、DLLファイルをシステムフォルダにコピーした後で、以下のレジストリ設定だけすれば、キー配列が反映されます。（Windows 7 64bitで確認）
+
+1.  kbd106us.dllを、システムフォルダにコピー
+1.  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\i8042prt\parametersの"LayerDriver JPN"を"kbd106us.dll"に変更する。
+1.  再起動
+
+
 そのほか
 --------
 
 * サービスパック適用後など、レジストリ設定が元に戻ってしまう場合がありますので、その際は上記のレジストリ設定を再度行ってください。
-* CtrlキーとCapsLockキーを入れ替えたい場合は、ScanCode Mapの変更をすると便利です。
+* CtrlキーとCapsLockキーを入れ替えたい場合は、ScanCode Mapの変更をしてください。
+ - [Scan Code Mapper for Windows](http://msdn.microsoft.com/en-us/windows/hardware/gg463447.aspx)
+ - [CapsLockを、左CtrlキーにするScanCode Mapのレジストリファイル](https://raw.github.com/pekeq/kbd106us/master/regedit/capsctrl.reg) （左Ctrlはそのままです）
 
 
 参考リンク
 ----------
-
-* [Scan Code Mapper for Windows](http://msdn.microsoft.com/en-us/windows/hardware/gg463447.aspx)
 
 * [窓使いの憂鬱](http://mayu.sourceforge.net/)
 * [のどか](http://www.appletkan.com/nodoka.htm)
